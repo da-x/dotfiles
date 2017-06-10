@@ -1,0 +1,113 @@
+! To re-eval this file: xrdb ~/.Xdefaults
+
+Emacs*geometry: 120x60
+
+Rxvt*background:        Black
+Rxvt*foreground:        White
+! Rxvt*font:              -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+Rxvt*saveLines:         50000
+Rxvt*geometry:          90x30
+Rxvt*cursorColor:       Green
+Rxvt*troughColor:       #666666
+Rxvt*print-pipe: "cat > /dev/null"
+
+! URxvt*font:             -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+URxvt*perl-ext:         default,matcher
+URxvt*urlLauncher:      google-chrome
+URxvt*perl-ext-common:  default,font-size,clipboard,mystuff,selection-to-clipboard
+
+URxvt.font:         xft:Hack-Regular:pixelsize=14,xft:Symbola
+URxvt.boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold,xft:Symbola
+URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:Symbola
+
+URxvt*saveLines:        50000
+URxvt*keysym.Shift-End: perl:mystuff:scroll-bottom
+! URxvt*keysym.C-End:     perl:mystuff:scroll-bottom
+! URxvt*keysym.Shift-Up:  perl:mystuff:scroll-down-line
+! URxvt*keysym.Shift-Down:perl:mystuff:scroll-up-line
+URxvt*keysym.S-C-Up:    perl:font-size:increase
+URxvt*keysym.S-C-Down:  perl:font-size:decrease
+URxvt*keysym.M-w:       perl:clipboard:copy
+URxvt*keysym.C-y:       perl:clipboard:paste
+URxvt*keysym.C-v:       perl:clipboard:paste
+URxvt*keysym.M-C-y:     perl:clipboard:paste_escaped
+URxvt*font-size.step:   1
+
+URxvt*keysym.C-1:   \033[27;5;49~
+URxvt*keysym.C-2:   \033[27;5;50~
+URxvt*keysym.C-3:   \033[27;5;51~
+URxvt*keysym.C-4:   \033[27;5;52~
+URxvt*keysym.C-5:   \033[27;5;53~
+URxvt*keysym.C-6:   \033[27;5;54~
+URxvt*keysym.C-7:   \033[27;5;55~
+URxvt*keysym.C-8:   \033[27;5;56~
+URxvt*keysym.C-9:   \033[27;5;57~
+URxvt*keysym.M-C-k:     \033[65;5u~
+URxvt*print-pipe: "cat > /dev/null"
+
+! emulate XTerm for proper recognition of key combinations in Vim
+
+URxvt.keysym.S-Up             : \033[1;2A
+URxvt.keysym.S-Down           : \033[1;2B
+URxvt.keysym.S-Right          : \033[1;2C
+URxvt.keysym.S-Left           : \033[1;2D
+URxvt.keysym.S-Home           : \033[1;2H
+URxvt.keysym.S-End            : \033[1;2F
+URxvt.keysym.M-Up             : \033[1;3A
+URxvt.keysym.M-Down           : \033[1;3B
+URxvt.keysym.M-Right          : \033[1;3C
+URxvt.keysym.M-Left           : \033[1;3D
+URxvt.keysym.M-Page_Up        : \033[5;3~
+URxvt.keysym.M-Page_Down      : \033[6;3~
+URxvt.keysym.M-Home           : \033[1;3H
+URxvt.keysym.M-End            : \033[1;3F
+URxvt.keysym.M-S-Up           : \033[1;4A
+URxvt.keysym.M-S-Down         : \033[1;4B
+URxvt.keysym.M-S-Right        : \033[1;4C
+URxvt.keysym.M-S-Left         : \033[1;4D
+URxvt.keysym.M-S-Home         : \033[1;4H
+URxvt.keysym.M-S-End          : \033[1;4F
+URxvt.keysym.C-Up             : \033[1;5A
+URxvt.keysym.C-Down           : \033[1;5B
+URxvt.keysym.C-Right          : \033[1;5C
+URxvt.keysym.C-Left           : \033[1;5D
+URxvt.keysym.C-Page_Up        : \033[5;5~
+URxvt.keysym.C-Page_Down      : \033[6;5~
+URxvt.keysym.C-Home           : \033[1;5H
+URxvt.keysym.C-End            : \033[1;5F
+! URxvt.keysym.C-S-Up           : \033[1;6A
+! URxvt.keysym.C-S-Down         : \033[1;6B
+URxvt.keysym.C-S-Right        : \033[1;6C
+URxvt.keysym.C-S-Left         : \033[1;6D
+URxvt.keysym.C-S-Home         : \033[1;6H
+URxvt.keysym.C-S-End          : \033[1;6F
+URxvt.keysym.M-C-Up           : \033[1;7A
+URxvt.keysym.M-C-Down         : \033[1;7B
+URxvt.keysym.M-C-Right        : \033[1;7C
+URxvt.keysym.M-C-Left         : \033[1;7D
+URxvt.keysym.M-C-Page_Up      : \033[5;7~
+URxvt.keysym.M-C-Page_Down    : \033[6;7~
+URxvt.keysym.M-C-Home         : \033[1;7H
+URxvt.keysym.M-C-End          : \033[1;7F
+URxvt.keysym.M-C-S-Up         : \033[1;8A
+URxvt.keysym.M-C-S-Down       : \033[1;8B
+URxvt.keysym.M-C-S-Right      : \033[1;8C
+URxvt.keysym.M-C-S-Left       : \033[1;8D
+URxvt.keysym.M-C-S-Home       : \033[1;8H
+URxvt.keysym.M-C-S-End        : \033[1;8F
+
+URxvt.keysym.S-Return         : \033[5;30001~
+URxvt.keysym.M-Return         : \033[5;30002~
+URxvt.keysym.C-M-Return       : \033[5;30003~
+
+! https://urxvt.wordpress.com/tag/urxvt-keybindings/
+; URxvt*keysym.C-End: \033[1;5F
+
+URxvt*clipboard.copycmd:  xclip -i -selection clipboard
+URxvt*clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+URxvt*fading: 10
+
+emacs.FontBackend: xft
