@@ -16,9 +16,9 @@ URxvt*perl-ext:         default,matcher
 URxvt*urlLauncher:      google-chrome
 URxvt*perl-ext-common:  default,font-size,clipboard,mystuff,selection-to-clipboard
 
-URxvt.font:         xft:Hack-Regular:pixelsize=14,xft:Symbola
-URxvt.boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold,xft:Symbola
-URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:Symbola
+URxvt*font:         xft:Hack-Regular:pixelsize=14,xft:PowerlineSymbols
+URxvt*boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold,xft:PowerlineSymbols
+URxvt*italicFont:   xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:PowerlineSymbols
 
 URxvt*saveLines:        50000
 URxvt*keysym.Shift-End: perl:mystuff:scroll-bottom
@@ -99,6 +99,12 @@ URxvt.keysym.M-C-S-End        : \033[1;8F
 URxvt.keysym.S-Return         : \033[5;30001~
 URxvt.keysym.M-Return         : \033[5;30002~
 URxvt.keysym.C-M-Return       : \033[5;30003~
+URxvt.keysym.Shift-Control-S  : \033[5;30004~
+
+URxvt*keysym.C-F2             : \033[1;5Q
+URxvt*keysym.C-F3             : \033[1;5R
+URxvt*keysym.C-F4             : \033[1;5S
+URxvt*keysym.C-F5             : \033[15;5~
 
 ! https://urxvt.wordpress.com/tag/urxvt-keybindings/
 ; URxvt*keysym.C-End: \033[1;5F
@@ -111,3 +117,8 @@ URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt*fading: 10
 
 emacs.FontBackend: xft
+
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
