@@ -3,9 +3,18 @@
 Installable via:
 
 ```
+# Vim
 ln -s $(pwd)/dotvimrc ~/.vimrc
 ln -s $(pwd)/vimrc ~/.vim_runtime
-ln -s $(pwd)/Xdefaults ~/.Xdefault
+
+# Tmux
 ln -s $(pwd)/tmux.conf ~/.tmux.conf
+
+# Zsh
+ln -s $(pwd)/dotzsh ~/.zsh
+ln -s $(pwd)/zshrc ~/.zshrc
+
+# Xdefaults
+ln -s $(pwd)/Xdefaults ~/.Xdefault
 xrdb ~/.Xdefaults
 ```
