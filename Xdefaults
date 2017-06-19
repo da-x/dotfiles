@@ -98,7 +98,8 @@ URxvt.keysym.M-C-S-End        : \033[1;8F
 
 URxvt.keysym.S-Return         : \033[5;30001~
 URxvt.keysym.M-Return         : \033[5;30002~
-URxvt.keysym.C-M-Return       : \033[5;30003~
+URxvt.keysym.C-Return         : \033[5;30003~
+URxvt.keysym.C-M-Return       : \033[5;30005~
 URxvt.keysym.Shift-Control-S  : \033[5;30004~
 
 URxvt*keysym.C-F2             : \033[1;5Q
