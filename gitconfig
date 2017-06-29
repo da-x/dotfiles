@@ -1,0 +1,162 @@
+[user]
+    useConfigOnly = true
+
+[core]
+    editor = vim
+    abbrev = 12
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    renames = true
+
+[push]
+    default = simple
+
+[pull]
+    ff = only
+
+[branch]
+    autosetuprebase = always
+
+[log]
+    decorate = true
+
+[gc]
+    auto = 0
+
+[grep]
+    lineNumber = true
+
+[pager]
+    log = fancydiff stdin --pager=less
+    show = fancydiff stdin --pager=less
+    diff = fancydiff stdin --pager=less
+
+[color]
+    ui = true
+    diff = off
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "grep"]
+    linenumber = white bold
+    match = green bold
+    filename = cyan
+    separator = yellow
+
+[alias]
+    C    = commit
+    Ca   = commit -a
+    P    = push
+    S    = status
+    a    = add
+    b    = branch
+    bn   = rev-parse --abbrev-ref HEAD
+    bd   = branch -D
+    bu   = branch -u
+    buo  = !sh -c 'git config branch.$(git bn).merge refs/heads/$1' $@
+    buom = !sh -c 'git branch --set-upstream-to origin/master'
+    bv   = branch -v
+    bvr  = branch -vr
+    co   = checkout
+    cp1  = chop1
+    cp2  = chop2
+    crpk = cherry-pick
+    ct   = "!git tracking-branch"
+    d    = "!git diff"
+    f    = fetch
+    g    = "!git grep"
+    l    = "!git log"
+    lc   = !sh -c 'git log `git ct`..HEAD $@' --
+    lc1  = !sh -c 'git log `git ct`..HEAD --oneline $@' --
+    lcr  = !sh -c 'git log --reverse `git ct`..HEAD $@' --
+    l1   = "!git log -1"
+    lig  = "!git ls-ignored"
+    nC   = "!git anticom"
+    oC   = !sh -c 'git commit-orig $@' -
+    rem  = remote
+    rh   = !sh -c 'git reset --hard $@' -
+    rhh  = !sh -c 'git reset --hard HEAD' -
+    sh   = "!git show"
+    st   = status
+    ua   = reset HEAD
+    sh1  = "!git show HEAD~1 $@"
+    sh2  = "!git show HEAD~2 $@"
+    sh3  = "!git show HEAD~3 $@"
+    sh4  = "!git show HEAD~4 $@"
+    sh5  = "!git show HEAD~5 $@"
+    sh6  = "!git show HEAD~6 $@"
+    sh7  = "!git show HEAD~7 $@"
+    sh8  = "!git show HEAD~8 $@"
+
+    # What refs contains the sha
+    whatrelease = name-rev --name-only
+
+    # What is the tracking branch of the current branch
+    tracking-branch = rev-parse --abbrev-ref --symbolic-full-name @{u}
+
+    # from https://github.com/cypher/dotfiles/blob/master/gitconfig
+    ls-ignored = ls-files --exclude-standard --ignored --others
+
+    empty-branches = !sh -c 'T=`git ct` && git branch --merged ${T} $@' -
+    first-not-mine = !sh -c 'git --no-pager log $@ --perl-regexp --author=\"^((?!$(git config user.name)).*)$\" -n 1 --pretty="%H"' -
+    chop1 = reset --hard HEAD~1
+    chop2 = reset --hard HEAD~2
+    graph = "!git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+    commit-orig = !sh -c 'git commit -C ORIG_HEAD $@' -
+    alias = !sh -c 'cat ~/.gitconfig'
+    anticom = !sh -c 'git reset --soft HEAD^'
+    amend = commit --amend
+    amendN = !sh -c 'git amend --no-edit' -
+    amendD = !sh -c 'git amend --date=\"$(date -R)\"' -
+    amendA = !sh -c 'git amend -a' -
+    amendDA = !sh -c 'git amend --date=\"$(date -R)\" -a' -
+    amendAD = !sh -c 'git amend --date=\"$(date -R)\" -a' -
+    amendND = !sh -c 'git amend --no-edit --date=\"$(date -R)\"' -
+    amendNA = !sh -c 'git amend --no-edit -a' -
+    amendNDA = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
+    amendNAD = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
+    last = !sh -c 'T=`git ct` && git log ${T}@{1}..${T} $@' -
+    next = !sh -c 'T=`git ct` && git log ${T}.. $@' -
+    add-suffix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-suffix $@' -
+    add-prefix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-prefix $@' -
+    coN = !sh -c 'T=`git ct` && git checkout -b $1 ${T} $2 $3 $4' -
+    coR = !sh -c 'T=`git symbolic-ref --short HEAD` && git checkout $1 && git branch -D ${T}' -
+    coT = "!f() { refname=$(echo ${1} | tr '~' '_'); branchname="${refname}-co"; git checkout -b ${branchname} ${refname}; } ; f"
+    set-dr = config dan.defaultremote
+    BcoN = "!git bottle && git coN $@"
+    BcoR = "!git bottle && git coR $@"
+    BcoT = "!git bottle && git coT $@"
+    reb = !sh -c 'T=`git ct` && git rebase $1 ${T} $@' -
+    rebI = !sh -c 'T=`git ct` && git rebase -i $1 ${T} $@' -
+    pop = "!git coR -"
+    popB = "!git coR - $@ && git unbottle" -
+    edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; eb `f`"
+    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+    cont = !git-continue
+    log-fancy = "!git -c color.diff=off -c pager.log='fancydiff stdin --pager=less' log $@"
+    show-fancy = "!git -c color.diff=off -c pager.show='fancydiff stdin --pager=less' show $@"
+    diff-fancy = "!git -c color.diff=off -c pager.diff='fancydiff stdin --pager=less' diff $@"
+    todo = "!vim `git rev-parse --git-dir`/todo.md"
+
+    # typos
+    lgo = "!git log"
+    gerp = "!git grep"
+    branc = branch
+    rebae = rebase
+    statuus = status
+    tatus = status
+    sattus = status
+    remtoe = remote
+    dif = "!git diff"

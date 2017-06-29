@@ -15,7 +15,7 @@ Rxvt*geometry:          90x30
 Rxvt*cursorColor:       Green
 Rxvt*troughColor:       #666666
 Rxvt*print-pipe:        "cat > /dev/null"
-! Rxvt*font:              -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+Rxvt*font:              -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 
 URxvt*saveLines:        50000
 URxvt*perl-ext:         default,matcher
@@ -24,10 +24,10 @@ URxvt*urlLauncher:      google-chrome
 URxvt*perl-ext-common:  default,font-size,clipboard,mystuff,selection-to-clipboard
 URxvt*fading: 10
 
-! URxvt*font:             -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
-URxvt*font:             xft:Hack-Regular:pixelsize=14,xft:PowerlineSymbols
-URxvt*boldFont:         xft:Hack-Bold:pixelsize=14:weight=bold,xft:PowerlineSymbols
-URxvt*italicFont:       xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:PowerlineSymbols
+URxvt*font:             -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+! URxvt*font:             xft:Hack-Regular:pixelsize=14,xft:PowerlineSymbols
+! URxvt*boldFont:         xft:Hack-Bold:pixelsize=14:weight=bold,xft:PowerlineSymbols
+! URxvt*italicFont:       xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:PowerlineSymbols
 URxvt*font-size.step:   1
 
 URxvt*clipboard.copycmd:  xclip -i -selection clipboard
@@ -65,6 +65,7 @@ URxvt.keysym.C-plus           : \033[5;30010~
 URxvt.keysym.C-bar            : \033[5;30011~
 URxvt.keysym.C-braceleft      : \033[5;30012~
 URxvt.keysym.C-braceright     : \033[5;30013~
+URxvt.keysym.C-space          : \033[5;30014~
 
 ! URxvt*keysym.C-End:     perl:mystuff:scroll-bottom
 ! URxvt*keysym.Shift-Up:  perl:mystuff:scroll-down-line
