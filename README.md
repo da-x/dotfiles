@@ -17,4 +17,8 @@ ln -s $(pwd)/zshrc ~/.zshrc
 # Xdefaults
 ln -s $(pwd)/Xdefaults ~/.Xdefault
 xrdb ~/.Xdefaults
+
+# Git
+echo "[include]" >> ~/.gitconfig
+echo "path = $(pwd)/gitconfig" >> ~/.gitconfig
 ```
