@@ -184,13 +184,29 @@ key_bindings:
   - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
+  - { key: Key0,     mods: Control | Shift, action: ResetFontSize        }
   - { key: Up,       mods: Control | Shift, action: IncreaseFontSize     }
   - { key: Down,     mods: Control | Shift, action: DecreaseFontSize     }
+  - { key: Return,   mods: Shift,           chars: "\x1b[5;30001~"       }
+  - { key: Return,   mods: Alt,             chars: "\x1b[5;30002~"       }
+  - { key: Return,   mods: Control,         chars: "\x1b[5;30003~"       }
+  - { key: Return,   mods: Control | Alt,   chars: "\x1b[5;30005~"       }
   - { key: Subtract, mods: Control | Shift, chars: "\x1b[5;30009~"       }
   - { key: Equals,   mods: Control | Shift, chars: "\x1b[5;30010~"       }
   - { key: LBracket, mods: Control | Shift, chars: "\x1b[5;30012~"       }
   - { key: RBracket, mods: Control | Shift, chars: "\x1b[5;30013~"       }
+  - { key: Space,    mods: Control,         chars: "\x1b[5;30014~"       }
+  - { key: Delete,   mods: Control,         chars: "\x1b[3;5~"           }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
+  - { key: Key1,     mods: Control, chars: "\x1b[27;5;49~"               }
+  - { key: Key2,     mods: Control, chars: "\x1b[27;5;50~"               }
+  - { key: Key3,     mods: Control, chars: "\x1b[27;5;51~"               }
+  - { key: Key4,     mods: Control, chars: "\x1b[27;5;52~"               }
+  - { key: Key5,     mods: Control, chars: "\x1b[27;5;53~"               }
+  - { key: Key6,     mods: Control, chars: "\x1b[27;5;54~"               }
+  - { key: Key7,     mods: Control, chars: "\x1b[27;5;55~"               }
+  - { key: Key8,     mods: Control, chars: "\x1b[27;5;56~"               }
+  - { key: Key9,     mods: Control, chars: "\x1b[27;5;57~"               }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[1~",  mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }

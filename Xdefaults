@@ -29,6 +29,7 @@ URxvt*font:             -xos4-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
 ! URxvt*boldFont:         xft:Hack-Bold:pixelsize=14:weight=bold,xft:PowerlineSymbols
 ! URxvt*italicFont:       xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:PowerlineSymbols
 URxvt*font-size.step:   1
+; URxvt*font:             xft:PxPlus IBM VGA8
 
 URxvt*clipboard.copycmd:  xclip -i -selection clipboard
 URxvt*clipboard.pastecmd: xclip -o -selection clipboard

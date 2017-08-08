@@ -99,9 +99,11 @@
     sh6  = "!git show HEAD~6 $@"
     sh7  = "!git show HEAD~7 $@"
     sh8  = "!git show HEAD~8 $@"
+    ftl  = !sh -c 'git fixup-to-last $@' -
 
     # What refs contains the sha
     whatrelease = name-rev --name-only
+    contains = branch --contains
 
     # What is the tracking branch of the current branch
     tracking-branch = rev-parse --abbrev-ref --symbolic-full-name @{u}
@@ -138,8 +140,8 @@
     BcoN = "!git bottle && git coN $@"
     BcoR = "!git bottle && git coR $@"
     BcoT = "!git bottle && git coT $@"
-    reb = !sh -c 'T=`git ct` && git rebase $1 ${T} $@' -
-    rebI = !sh -c 'T=`git ct` && git rebase -i $1 ${T} $@' -
+    reb = !sh -c 'T=`git ct` && git rebase --autosquash $1 ${T} $@' -
+    rebI = !sh -c 'T=`git ct` && git rebase --autosquash -i $1 ${T} $@' -
     pop = "!git coR -"
     popB = "!git coR - $@ && git unbottle" -
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; eb `f`"
