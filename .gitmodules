@@ -4,3 +4,6 @@
 [submodule "dotzsh"]
 	path = dotzsh
 	url = https://github.com/da-x/dotzsh
+[submodule "gdb-dashboard"]
+	path = gdb-dashboard
+	url = https://github.com/cyrus-and/gdb-dashboard
