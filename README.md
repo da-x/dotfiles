@@ -21,4 +21,7 @@ xrdb ~/.Xdefaults
 # Git
 echo "[include]" >> ~/.gitconfig
 echo "path = $(pwd)/gitconfig" >> ~/.gitconfig
+
+# Gdb
+echo "source $(pwd)/gdb-dashboard/.gdbinit" >> ~/.gdbinit
 ```
