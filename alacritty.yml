@@ -85,11 +85,11 @@ small_font:
   upper_bound: 11.0
   font:
       normal:
-        family: Terminus
+        family: xos4 Terminus
       bold:
-        family: Terminus
+        family: xos4 Terminus
       italic:
-        family: Terminus
+        family: xos4 Terminus
       size: 16.0
       offset:
         x: 0.0
