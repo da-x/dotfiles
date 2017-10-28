@@ -82,15 +82,15 @@ font:
 
 # Small font configuration (changes require restart)
 small_font:
-  upper_bound: 11.0
+  upper_bound: 10.5
   font:
       normal:
-        family: Terminus
+        family: xos4 Terminus
       bold:
-        family: Terminus
+        family: xos4 Terminus
       italic:
-        family: Terminus
-      size: 16.0
+        family: xos4 Terminus
+      size: 13.0
       offset:
         x: 0.0
         y: 0.0
