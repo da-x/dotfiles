@@ -10,6 +10,7 @@
 
 [diff]
     renames = true
+    submodule = log
 
 [push]
     default = simple
@@ -54,6 +55,9 @@
     match = green bold
     filename = cyan
     separator = yellow
+
+[status]
+    submoduleSummary = true
 
 [alias]
     C    = commit
