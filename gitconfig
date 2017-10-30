@@ -58,6 +58,7 @@
 [alias]
     C    = commit
     Ca   = commit -a
+    Cam  = commit -a -m
     P    = push
     S    = status
     a    = add
