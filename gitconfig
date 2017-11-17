@@ -115,6 +115,7 @@
 
     # from https://github.com/cypher/dotfiles/blob/master/gitconfig
     ls-ignored = ls-files --exclude-standard --ignored --others
+    list-untracked  = !sh -c 'git status --porcelain | grep '^??' | cut -c4-' -
 
     empty-branches = !sh -c 'T=`git ct` && git branch --merged ${T} $@' -
     first-not-mine = !sh -c 'git --no-pager log $@ --perl-regexp --author=\"^((?!$(git config user.name)).*)$\" -n 1 --pretty="%H"' -
