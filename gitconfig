@@ -105,6 +105,8 @@
     sh7  = "!git show HEAD~7 $@"
     sh8  = "!git show HEAD~8 $@"
     ftl  = !sh -c 'git fixup-to-last $@' -
+    ctags = !sh -c 'git ls-files | ctags --c-kinds=+p -L -' -
+    editlocalconf = "!vim `git rev-parse --git-dir`/config"
 
     # What refs contains the sha
     whatrelease = name-rev --name-only
