@@ -107,6 +107,7 @@
     ftl  = !sh -c 'git fixup-to-last $@' -
     ctags = !sh -c 'git ls-files | ctags --c-kinds=+p -L -' -
     editlocalconf = "!vim `git rev-parse --git-dir`/config"
+    ful   = !sh -c '~/.files/git-fixup/git-fixup $@' -
 
     # What refs contains the sha
     whatrelease = name-rev --name-only
