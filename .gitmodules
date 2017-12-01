@@ -7,3 +7,6 @@
 [submodule "gdb-dashboard"]
 	path = gdb-dashboard
 	url = https://github.com/cyrus-and/gdb-dashboard
+[submodule "git-fixup"]
+	path = git-fixup
+	url = https://github.com/keis/git-fixup
