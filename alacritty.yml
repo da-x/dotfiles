@@ -215,6 +215,11 @@ key_bindings:
   - { key: LBracket, mods: Control | Shift, chars: "\x1b[5;30012~"       }
   - { key: RBracket, mods: Control | Shift, chars: "\x1b[5;30013~"       }
   - { key: Space,    mods: Control,         chars: "\x1b[5;30014~"       }
+  - { key: M,        mods: Control | Shift, chars: "\x1b[5;30015~"       }
+  - { key: J,        mods: Control | Shift, chars: "\x1b[5;30016~"       }
+  - { key: U,        mods: Control | Shift, chars: "\x1b[5;30017~"       }
+  - { key: T,        mods: Control | Shift, chars: "\x1b[5;30018~"       }
+  - { key: Y,        mods: Control | Shift, chars: "\x1b[5;30019~"       }
   - { key: Delete,   mods: Control,         chars: "\x1b[3;5~"           }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key1,     mods: Control, chars: "\x1b[27;5;49~"               }
