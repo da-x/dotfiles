@@ -60,42 +60,44 @@
     submoduleSummary = true
 
 [alias]
+    A    = add
     C    = commit
     Ca   = commit -a
     Cam  = commit -a -m
     P    = push
+    RH   = !sh -c 'git reset --hard $@' -
+    RHH  = !sh -c 'git reset --hard HEAD' -
     S    = status
-    a    = add
-    b    = branch
-    bn   = rev-parse --abbrev-ref HEAD
+    b    = branch -v
     bd   = branch -D
+    bm   = branch -M
+    bn   = rev-parse --abbrev-ref HEAD
+    br   = branch -r
     bu   = branch -u
     buo  = !sh -c 'git config branch.$(git bn).merge refs/heads/$1' $@
     buom = !sh -c 'git branch --set-upstream-to origin/master'
-    bv   = branch -v
-    bvr  = branch -vr
     co   = checkout
     cp1  = chop1
     cp2  = chop2
     crpk = cherry-pick
     ct   = "!git tracking-branch"
+    ctags = !sh -c 'git ls-files | ctags --c-kinds=+p -L -' -
     d    = "!git diff"
+    elc  = "!vim `git rev-parse --git-dir`/config"
     f    = fetch
+    ftl  = !sh -c 'git fixup-to-last $@' -
+    ful  = !sh -c '~/.files/git-fixup/git-fixup $@' -
     g    = "!git grep"
     l    = "!git log"
+    l1   = "!git log -1"
     lc   = !sh -c 'git log `git ct`..HEAD $@' --
     lc1  = !sh -c 'git log `git ct`..HEAD --oneline $@' --
     lcr  = !sh -c 'git log --reverse `git ct`..HEAD $@' --
-    l1   = "!git log -1"
     lig  = "!git ls-ignored"
     nC   = "!git anticom"
     oC   = !sh -c 'git commit-orig $@' -
     rem  = remote
-    rh   = !sh -c 'git reset --hard $@' -
-    rhh  = !sh -c 'git reset --hard HEAD' -
     sh   = "!git show"
-    st   = status
-    ua   = reset HEAD
     sh1  = "!git show HEAD~1 $@"
     sh2  = "!git show HEAD~2 $@"
     sh3  = "!git show HEAD~3 $@"
@@ -104,10 +106,8 @@
     sh6  = "!git show HEAD~6 $@"
     sh7  = "!git show HEAD~7 $@"
     sh8  = "!git show HEAD~8 $@"
-    ftl  = !sh -c 'git fixup-to-last $@' -
-    ctags = !sh -c 'git ls-files | ctags --c-kinds=+p -L -' -
-    editlocalconf = "!vim `git rev-parse --git-dir`/config"
-    ful   = !sh -c '~/.files/git-fixup/git-fixup $@' -
+    st   = status
+    ua   = reset HEAD
 
     # What refs contains the sha
     whatrelease = name-rev --name-only
