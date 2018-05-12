@@ -62,6 +62,7 @@
 [alias]
     A    = add
     C    = commit
+    Cm   = commit -m
     Ca   = commit -a
     Cam  = commit -a -m
     P    = push
