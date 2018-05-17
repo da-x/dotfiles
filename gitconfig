@@ -75,8 +75,8 @@
     bn   = rev-parse --abbrev-ref HEAD
     br   = branch -r
     bu   = branch -u
-    buo  = !sh -c 'git config branch.$(git bn).merge refs/heads/$1' $@
-    buom = !sh -c 'git branch --set-upstream-to origin/master'
+    buo  = !sh -c 'git bu origin/$(git bn)'
+    buom = !sh -c 'git bu origin/master'
     co   = checkout
     cp1  = chop1
     cp2  = chop2
@@ -121,45 +121,36 @@
     ls-ignored = ls-files --exclude-standard --ignored --others
     list-untracked  = !sh -c 'git status --porcelain | grep '^??' | cut -c4-' -
 
-    empty-branches = !sh -c 'T=`git ct` && git branch --merged ${T} $@' -
-    first-not-mine = !sh -c 'git --no-pager log $@ --perl-regexp --author=\"^((?!$(git config user.name)).*)$\" -n 1 --pretty="%H"' -
+    add-prefix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-prefix $@' -
+    add-suffix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-suffix $@' -
+    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+    root-conf = !sh -c 'cat ~/.files/gitconfig'
+    amend = commit --amend
+    amendA = !sh -c 'git amend -a' -
+    amendAD = !sh -c 'git amend --date=\"$(date -R)\" -a' -
+    amendD = !sh -c 'git amend --date=\"$(date -R)\"' -
+    amendDA = !sh -c 'git amend --date=\"$(date -R)\" -a' -
+    amendN = !sh -c 'git amend --no-edit' -
+    amendNA = !sh -c 'git amend --no-edit -a' -
+    amendNAD = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
+    amendND = !sh -c 'git amend --no-edit --date=\"$(date -R)\"' -
+    amendNDA = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
+    anticom = !sh -c 'git reset --soft HEAD^'
     chop1 = reset --hard HEAD~1
     chop2 = reset --hard HEAD~2
-    graph = "!git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
     commit-orig = !sh -c 'git commit -C ORIG_HEAD $@' -
-    alias = !sh -c 'cat ~/.gitconfig'
-    anticom = !sh -c 'git reset --soft HEAD^'
-    amend = commit --amend
-    amendN = !sh -c 'git amend --no-edit' -
-    amendD = !sh -c 'git amend --date=\"$(date -R)\"' -
-    amendA = !sh -c 'git amend -a' -
-    amendDA = !sh -c 'git amend --date=\"$(date -R)\" -a' -
-    amendAD = !sh -c 'git amend --date=\"$(date -R)\" -a' -
-    amendND = !sh -c 'git amend --no-edit --date=\"$(date -R)\"' -
-    amendNA = !sh -c 'git amend --no-edit -a' -
-    amendNDA = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
-    amendNAD = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
+    cont = !git-continue
+    diff-fancy = "!git -c color.diff=off -c pager.diff='fancydiff stdin --pager=less' diff $@"
+    edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; eb `f`"
+    empty-branches = !sh -c 'T=`git ct` && git branch --merged ${T} $@' -
+    first-not-mine = !sh -c 'git --no-pager log $@ --perl-regexp --author=\"^((?!$(git config user.name)).*)$\" -n 1 --pretty="%H"' -
+    graph = "!git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
     last = !sh -c 'T=`git ct` && git log ${T}@{1}..${T} $@' -
+    log-fancy = "!git -c color.diff=off -c pager.log='fancydiff stdin --pager=less' log $@"
     next = !sh -c 'T=`git ct` && git log ${T}.. $@' -
-    add-suffix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-suffix $@' -
-    add-prefix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-prefix $@' -
-    coN = !sh -c 'T=`git ct` && git checkout -b $1 ${T} $2 $3 $4' -
-    coR = !sh -c 'T=`git symbolic-ref --short HEAD` && git checkout $1 && git branch -D ${T}' -
-    coT = "!f() { refname=$(echo ${1} | tr '~' '_'); branchname="${refname}-co"; git checkout -b ${branchname} ${refname}; } ; f"
-    set-dr = config dan.defaultremote
-    BcoN = "!git bottle && git coN $@"
-    BcoR = "!git bottle && git coR $@"
-    BcoT = "!git bottle && git coT $@"
     reb = !sh -c 'T=`git ct` && git rebase --autosquash $1 ${T} $@' -
     rebI = !sh -c 'T=`git ct` && git rebase --autosquash -i $1 ${T} $@' -
-    pop = "!git coR -"
-    popB = "!git coR - $@ && git unbottle" -
-    edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; eb `f`"
-    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
-    cont = !git-continue
-    log-fancy = "!git -c color.diff=off -c pager.log='fancydiff stdin --pager=less' log $@"
     show-fancy = "!git -c color.diff=off -c pager.show='fancydiff stdin --pager=less' show $@"
-    diff-fancy = "!git -c color.diff=off -c pager.diff='fancydiff stdin --pager=less' diff $@"
     todo = "!vim `git rev-parse --git-dir`/todo.md"
 
     # typos
