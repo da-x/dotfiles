@@ -82,7 +82,7 @@
     cp2  = chop2
     crpk = cherry-pick
     ct   = "!git tracking-branch"
-    ctags = !sh -c 'git ls-files | ctags --c-kinds=+p -L -' -
+    ctags = !sh -c '~/.files/ctags.sh $@' -
     d    = "!git diff"
     elc  = "!vim `git rev-parse --git-dir`/config"
     f    = fetch
