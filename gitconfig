@@ -148,6 +148,7 @@
     last = !sh -c 'T=`git ct` && git log ${T}@{1}..${T} $@' -
     log-fancy = "!git -c color.diff=off -c pager.log='fancydiff stdin --pager=less' log $@"
     next = !sh -c 'T=`git ct` && git log ${T}.. $@' -
+    reon = !sh -c 'git rebase $1 --onto $2' -
     reb = !sh -c 'T=`git ct` && git rebase --autosquash $1 ${T} $@' -
     rebI = !sh -c 'T=`git ct` && git rebase --autosquash -i $1 ${T} $@' -
     show-fancy = "!git -c color.diff=off -c pager.show='fancydiff stdin --pager=less' show $@"
