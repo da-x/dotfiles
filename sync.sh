@@ -4,4 +4,9 @@ set -eux
 
 git fetch
 git rebase
-git submodule update --init --recursive --rebase
+
+for i in dotzsh gdb-dashboard git-fixup ; do
+    cd $i
+    git submodule update --init --recursive --rebase
+    cd ..
+done
