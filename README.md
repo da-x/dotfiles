@@ -24,4 +24,7 @@ echo "path = $(pwd)/gitconfig" >> ~/.gitconfig
 
 # Gdb
 echo "source $(pwd)/gdb-dashboard/.gdbinit" >> ~/.gdbinit
+
+# Midnight Commander
+ln -f -s $(pwd)/mc ~/.config/mc
 ```
