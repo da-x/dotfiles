@@ -10,3 +10,6 @@ for i in dotzsh gdb-dashboard git-fixup ; do
     git submodule update --init --recursive --rebase
     cd ..
 done
+
+cd vimrc
+vim -S snapshot.vim
