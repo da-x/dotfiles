@@ -10,3 +10,13 @@ if [[ $? != 0 ]] ; then
 fi
 git ls-files | ctags --c-kinds=+p -L - -f .git/tags.$$ --exclude=.git --languages=-sql,-css,-javascript
 mv .git/tags.$$ ._TAGS_
+
+if [[ -e Cargo.toml ]] ; then
+    for i in $(find .git -wholename \*info/exclude\*); do
+	grep '^rusty-tags.vi' ${i} > /dev/null
+	if [[ $? != 0 ]] ; then
+	    echo rusty-tags.vi >> ${i}
+	fi
+    done
+    rusty-tags vi
+fi
