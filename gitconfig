@@ -61,23 +61,32 @@
 
 [alias]
     a     = add
+    amd   = commit --amend
+    amend = commit --amend
+    ama   = commit --amend -a
+    amna  = commit --amend --no-edit -a
+    amupd = commit --amend --no-edit --date=\"$(date -R)\" -a
     b     = branch -v
     bd    = branch -D
+    bl    = fancy-branch-list
     bm    = branch -M
     bn    = rev-parse --abbrev-ref HEAD
-    br    = branch -r
+    br    = branch -v -r
     bu    = branch -u
     buo   = !sh -c 'git bu origin/$(git bn)'
     buom  = !sh -c 'git bu origin/master'
     c     = commit
     ca    = commit -a
     cam   = commit -a -m
+    chop1 = reset --hard HEAD~1
+    chop2 = reset --hard HEAD~2
+    chr   = cherry-pick
     cm    = commit -m
     co    = checkout
+    cont  = !git-continue
     cp1   = chop1
     cp2   = chop2
-    crpk  = cherry-pick
-    ct    = "!git tracking-branch"
+    ctags = !sh -c '~/.files/ctags.sh $@' -
     d     = "!git diff"
     ec    = "!vim `git rev-parse --git-dir`/config"
     f     = fetch
@@ -86,18 +95,24 @@
     g     = "!git grep"
     l     = "!git log"
     l1    = "!git log -1"
-    lc    = !sh -c 'git log `git ct`..HEAD $@' --
-    lc1   = !sh -c 'git log `git ct`..HEAD --oneline $@' --
-    lcr   = !sh -c 'git log --reverse `git ct`..HEAD $@' --
+    last  = !sh -c 'T=`git tb` && git log ${T}@{1}..${T} $@' -
+    lc    = !sh -c 'git log `git tb`..HEAD $@' --
+    lc1   = !sh -c 'git log `git tb`..HEAD --oneline $@' --
+    lcr   = !sh -c 'git log --reverse `git tb`..HEAD $@' --
     lig   = "!git ls-ignored"
+    n     = next
     nc    = "!git anticom"
+    next  = !sh -c 'T=`git tb` && git log ${T}.. $@' -
     oc    = !sh -c 'git commit-orig $@' -
     p     = push
-    rb    = rebase
-    rt    = remote
-    rbh   = !sh -c 'git rebase -i HEAD~$1' -
     r-    = !sh -c 'git reset --hard $@' -
-    r-u   = reset HEAD
+    r-h   = reset HEAD
+    rb    = rebase
+    rbh   = !sh -c 'git rebase -i HEAD~$1' -
+    rbt   = !sh -c 'T=`git tb` && git rebase --autosquash $1 ${T} $@' -
+    rbi   = !sh -c 'T=`git tb` && git rebase --autosquash -i $1 ${T} $@' -
+    ron   = !sh -c 'git rebase $1 --onto $2' -
+    rt    = remote
     s     = status
     sh    = "!git show"
     sh1   = "!git show HEAD~1 $@"
@@ -108,7 +123,8 @@
     sh6   = "!git show HEAD~6 $@"
     sh7   = "!git show HEAD~7 $@"
     sh8   = "!git show HEAD~8 $@"
-    ctags = !sh -c '~/.files/ctags.sh $@' -
+    tb    = "!git tracking-branch"
+    todo  = "!vim `git rev-parse --git-dir`/todo.md"
 
     # What refs contains the sha
     whatrelease = name-rev --name-only
@@ -121,38 +137,19 @@
     ls-ignored = ls-files --exclude-standard --ignored --others
     list-untracked  = !sh -c 'git status --porcelain | grep '^??' | cut -c4-' -
 
-    add-prefix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-prefix $@' -
-    add-suffix = !sh -c 'T=`git ct` && git tag-commits ${T} --add-suffix $@' -
+    add-prefix = !sh -c 'T=`git tb` && git tag-commits ${T} --add-prefix $@' -
+    add-suffix = !sh -c 'T=`git tb` && git tag-commits ${T} --add-suffix $@' -
     add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
     root-conf = !sh -c 'cat ~/.files/gitconfig'
-    amend = commit --amend
-    amendA = !sh -c 'git amend -a' -
-    amendAD = !sh -c 'git amend --date=\"$(date -R)\" -a' -
-    amendD = !sh -c 'git amend --date=\"$(date -R)\"' -
-    amendDA = !sh -c 'git amend --date=\"$(date -R)\" -a' -
-    amendN = !sh -c 'git amend --no-edit' -
-    amendNA = !sh -c 'git amend --no-edit -a' -
-    amendNAD = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
-    amendND = !sh -c 'git amend --no-edit --date=\"$(date -R)\"' -
-    amendNDA = !sh -c 'git amend --no-edit --date=\"$(date -R)\" -a' -
     anticom = !sh -c 'git reset --soft HEAD^'
-    chop1 = reset --hard HEAD~1
-    chop2 = reset --hard HEAD~2
     commit-orig = !sh -c 'git commit -C ORIG_HEAD $@' -
-    cont = !git-continue
     diff-fancy = "!git -c color.diff=off -c pager.diff='fancydiff stdin --pager=less' diff $@"
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; eb `f`"
-    empty-branches = !sh -c 'T=`git ct` && git branch --merged ${T} $@' -
+    empty-branches = !sh -c 'T=`git tb` && git branch --merged ${T} $@' -
     first-not-mine = !sh -c 'git --no-pager log $@ --perl-regexp --author=\"^((?!$(git config user.name)).*)$\" -n 1 --pretty="%H"' -
     graph = "!git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-    last = !sh -c 'T=`git ct` && git log ${T}@{1}..${T} $@' -
     log-fancy = "!git -c color.diff=off -c pager.log='fancydiff stdin --pager=less' log $@"
-    next = !sh -c 'T=`git ct` && git log ${T}.. $@' -
-    reon = !sh -c 'git rebase $1 --onto $2' -
-    reb = !sh -c 'T=`git ct` && git rebase --autosquash $1 ${T} $@' -
-    rebI = !sh -c 'T=`git ct` && git rebase --autosquash -i $1 ${T} $@' -
     show-fancy = "!git -c color.diff=off -c pager.show='fancydiff stdin --pager=less' show $@"
-    todo = "!vim `git rev-parse --git-dir`/todo.md"
 
     # typos
     lgo = "!git log"
