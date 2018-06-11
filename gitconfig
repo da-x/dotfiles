@@ -112,6 +112,7 @@
     rbt   = !sh -c 'T=`git tb` && git rebase --autosquash $1 ${T} $@' -
     rbi   = !sh -c 'T=`git tb` && git rebase --autosquash -i $1 ${T} $@' -
     ron   = !sh -c 'git rebase $1 --onto $2' -
+    arb   = !sh -c 'git absorb $@ && git rbi' -
     rt    = remote
     s     = status
     sh    = "!git show"
