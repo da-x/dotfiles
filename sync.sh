@@ -2,6 +2,8 @@
 
 set -eux
 
+git co mc/ini
+
 git fetch
 git rebase
 
@@ -12,4 +14,4 @@ for i in dotzsh gdb-dashboard git-fixup ; do
 done
 
 cd vimrc
-vim -S snapshot.vim
+nvim -S snapshot.vim
