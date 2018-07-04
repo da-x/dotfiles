@@ -41,6 +41,7 @@ draw_bold_text_with_bright_colors: true
 
 # Font configuration (changes require restart)
 font:
+  scale_with_dpi: true
   # The normal (roman) font face to use.
   normal:
     family: Hack
@@ -60,7 +61,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 13.0
+  size: 11.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -83,6 +84,7 @@ font:
 # Small font configuration (changes require restart)
 small_font:
   upper_bound: 11.0
+  scale_with_dpi: true
   font:
       normal:
         family: Terminus
@@ -90,7 +92,7 @@ small_font:
         family: Terminus
       italic:
         family: Terminus
-      size: 16.0
+      size: 14.0
       offset:
         x: 0.0
         y: 0.0

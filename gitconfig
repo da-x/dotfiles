@@ -31,6 +31,7 @@
     lineNumber = true
 
 [pager]
+    branch = cat
     log = fancydiff stdin --pager=less
     show = fancydiff stdin --pager=less
     diff = fancydiff stdin --pager=less
