@@ -24,6 +24,9 @@
 [log]
     decorate = true
 
+[rerere]
+    enabled = false
+
 [gc]
     auto = 0
 
