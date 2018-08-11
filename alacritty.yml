@@ -66,11 +66,10 @@ font:
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
   # false.
-  use_thin_strokes: true
 
 # Small font configuration (changes require restart)
 small_font:
-  upper_bound: 11.0
+  upper_bound: 10.0
   scale_with_dpi: true
   font:
       normal:
@@ -79,8 +78,7 @@ small_font:
         family: Terminus
       italic:
         family: Terminus
-      use_thin_strokes: true
-      size: 16.0
+      size: 12.0
 
 # Should display the render timer
 render_timer: false
