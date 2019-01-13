@@ -14,19 +14,6 @@ env:
   # `infocmp xterm-256color`.
   TERM: xterm-256color
 
-# Window dimensions in character columns and lines
-# (changes require restart)
-dimensions:
-  columns: 80
-  lines: 24
-
-# Adds this many blank pixels of padding around the window
-# Units are physical pixels; this is not DPI aware.
-# (change requires restart)
-padding:
-  x: 2
-  y: 2
-
 # The FreeType rasterizer needs to know the device DPI for best results
 # (changes require restart)
 dpi:
@@ -41,7 +28,6 @@ draw_bold_text_with_bright_colors: true
 
 # Font configuration (changes require restart)
 font:
-  scale_with_dpi: true
   # The normal (roman) font face to use.
   normal:
     family: Hack
@@ -70,7 +56,6 @@ font:
 # Small font configuration (changes require restart)
 small_font:
   upper_bound: 7.0
-  scale_with_dpi: true
   font:
       normal:
         family: Terminus
@@ -82,10 +67,6 @@ small_font:
 
 # Should display the render timer
 render_timer: false
-
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: true
 
 # Colors (Tomorrow Night Bright)
 colors:
@@ -314,8 +295,6 @@ ouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
-hide_cursor_when_typing: false
-
 # Shell
 #
 # You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
@@ -328,7 +307,7 @@ hide_cursor_when_typing: false
 scrolling:
   # How many lines of scrollback to keep,
   # '0' will disable scrolling.
-  history: 200000
+  history: 100000
 
   # Number of lines the viewport will move for every line
   # scrolled when scrollback is enabled (history > 0).
