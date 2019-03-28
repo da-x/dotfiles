@@ -7,6 +7,9 @@ Installable via:
 ln -s $(pwd)/dotvimrc ~/.vimrc
 ln -s $(pwd)/vimrc ~/.vim_runtime
 
+# NeoVim
+ln -s $(pwd)/nvim/init.vim ~/.config/nvim/init.vim
+
 # Tmux
 ln -s $(pwd)/tmux.conf ~/.tmux.conf
 
