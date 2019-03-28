@@ -2,7 +2,7 @@
 
 set -eux
 
-git co mc/ini
+git checkout mc/ini
 
 git fetch
 git rebase
