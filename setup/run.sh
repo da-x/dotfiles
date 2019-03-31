@@ -15,6 +15,7 @@ set -e
 set -u
 
 # TODO: stable chrome repo install
+# TODO: user-dirs https://wiki.archlinux.org/index.php/XDG_user_directories
 
 if [[ "$NAME" == "CentOS Linux" ]] ; then
     centos7-gui() {
@@ -29,11 +30,11 @@ if [[ "$NAME" == "CentOS Linux" ]] ; then
 
     centos7-base-setup() {
 	sudo yum -y groupinstall 'Development Tools' && sudo yum install curl wget file git fedpkg
-	sudo usermod -a -G mock dan
+	sudo usermod -a -G mock $USER
 	sudo su -c 'echo config_opts[\"dnf_warning\"] = False >> /etc/mock/site-defaults.cfg'
 	sudo yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 	sudo yum install -y python36u-pip python36u-devel python36u python-pip python-devel
-	sudo yum install -y mc fedpkg
+	sudo yum install -y fedpkg xsel xclip
     }
 
     build-path() {
@@ -49,7 +50,7 @@ if [[ "$NAME" == "CentOS Linux" ]] ; then
 	rm -rf results_zsh
 	fedpkg --release epel7 mockbuild
 	sudo yum install -y results_zsh/*/*.el7/zsh-5*.x86_64.rpm
-	sudo chsh dan -s /bin/zsh
+	sudo chsh $USER -s /bin/zsh
 	sudo rm -f /etc/zlogout
 	cd ..
     }
@@ -102,6 +103,28 @@ if [[ "$NAME" == "CentOS Linux" ]] ; then
 	pip install --user --upgrade pynvim
 	pip3.6 install --user --upgrade pynvim
     }
+
+    centos7-alacritty() {
+	build-path
+	sudo yum install -y freetype-devel expat-devel
+
+	git clone https://github.com/da-x/alacritty
+
+	cd alacritty
+	git checkout auto-small-font
+	cargo install --path .
+    }
+
+    centos7-mc() {
+	build-path
+	fedpkg clone -a mc
+	cd mc
+	git reset --hard origin/f29
+	rm -rf results_git
+	fedpkg --release epel7 mockbuild
+	sudo yum install -y results_mc/*/*.el7/*.x86_64.rpm
+	cd ..
+    }
 fi
 
 rust-install() {
@@ -136,7 +159,9 @@ dotfiles-install() {
 }
 
 devenv-install() {
-    mkdir -k ~/dev/env
+    mkdir -p ~/dev/env
+
+    cd ~/dev/env
 
     git clone https://github.com/da-x/misc-gitology
     cd misc-gitology
@@ -145,7 +170,7 @@ devenv-install() {
     ln -s ~/dev/env/misc-gitology/git-* .
 
     git clone https://github.com/da-x/git-search-replace
-    cd git-search-replease
+    cd git-search-replace
     python setup.py install --user
 
     cd ~/.local/bin
@@ -155,17 +180,6 @@ devenv-install() {
     git clone https://github.com/da-x/git-bottle
     cd ~/.local/bin
     ln -s ~/dev/env/git-bottle/git-* .
-}
-
-alacritty-install() {
-    build-path
-    sudo yum install -y freetype-devel expat-devel
-
-    git clone https://github.com/da-x/alacritty
-
-    cd alacritty
-    git checkout auto-small-font
-    cargo install --path .
 }
 
 "$@"
