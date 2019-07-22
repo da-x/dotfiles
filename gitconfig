@@ -107,6 +107,7 @@
     n     = next
     nc    = "!git anticom"
     next  = !sh -c 'T=`git tb` && git log ${T}.. $@' -
+    mbr   = mass-branch-rename
     oc    = !sh -c 'git commit-orig $@' -
     p     = push
     r-    = !sh -c 'git reset --hard $@' -
