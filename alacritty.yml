@@ -65,9 +65,6 @@ small_font:
         family: Terminus
       size: 12.0
 
-# Should display the render timer
-render_timer: false
-
 # Colors (Tomorrow Night Bright)
 colors:
   # Default colors
