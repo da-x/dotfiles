@@ -65,6 +65,7 @@
 
 [alias]
     a     = add
+    top   = !sh -c 'git --no-pager log -n 10 --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
     amd   = commit --amend
     amend = commit --amend
     ama   = commit --amend -a
