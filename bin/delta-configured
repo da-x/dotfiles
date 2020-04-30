@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+exec delta \
+    --color-only \
+    --24-bit-color always \
+    --highlight-removed \
+    --file-color '#cccccc' \
+    --file-background '#222222' \
+    --commit-color '#ffffff' \
+    --commit-meta-header-background '#880088' \
+    --commit-meta-other-background '#440044' \
+    --hunk-color '#999999' \
+    --hunk-background '#000088' \
+    "$@"

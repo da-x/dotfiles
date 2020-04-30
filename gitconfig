@@ -4,7 +4,7 @@
 [core]
     editor = nvim
     abbrev = 12
-# pager = delta --plus-color="#012800" --minus-color="#340001" --commit-color="#444444" --file-color="blue" --hunk-color="#555555" */
+    pager = delta-configured
 
 [merge]
     conflictstyle = diff3
@@ -36,28 +36,14 @@
 
 [pager]
     branch = cat
-    log = fancydiff stdin --pager=less
-    show = fancydiff stdin --pager=less
-    diff = fancydiff stdin --pager=less
 
-
-# [interactive]/
-#     diffFilter = delta --color-only --keep-plus-minus-markers --commit-color="#444444" --file-color="blue" --hunk-color="#555555" */
-
-[color]
-    ui = true
-    diff = off
+[interactive]
+    diffFilter = delta-configured
 
 [color "branch"]
     current = yellow reverse
     local = yellow
     remote = green
-
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
 
 [color "grep"]
     linenumber = white bold
