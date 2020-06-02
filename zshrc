@@ -1,3 +1,5 @@
+export PATH=$HOME/.meta/bin:$PATH
+
 source ~/.zsh/zshrc.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
