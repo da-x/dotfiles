@@ -1,4 +1,5 @@
 export PATH=$HOME/.meta/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 source ~/.zsh/zshrc.sh
 
