@@ -51,7 +51,8 @@ font:
 
 # Small font configuration (changes require restart)
 small_font:
-  upper_bound: 7.0
+  upper_bound:
+      size: 7.0
   font:
       normal:
         family: Terminus
