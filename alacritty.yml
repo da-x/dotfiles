@@ -178,6 +178,7 @@ key_bindings:
   - { key: Y,        mods: Control | Shift, chars: "\x1b[5;30019~"       }
   - { key: Subtract,  mods: Control | Alt,   chars: "\x1b[5;30020~"       }
   - { key: Backslash, mods: Control | Alt,   chars: "\x1b[5;30021~"       }
+  - { key: Apostrophe, mods: Control,   chars: "\x1b[5;30024~"       }
   - { key: Delete,   mods: Control,         chars: "\x1b[3;5~"           }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key1,     mods: Control, chars: "\x1b[27;5;49~"               }
