@@ -51,6 +51,9 @@
     filename = cyan
     separator = yellow
 
+[commit]
+    verbose = true
+
 [status]
     submoduleSummary = true
 
