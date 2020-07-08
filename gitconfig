@@ -67,6 +67,8 @@
     amupd = commit --amend --no-edit --date=\"$(date -R)\" -a
     b     = branch -v
     bd    = branch -D
+    # Delete previous branch
+    bdp   = branch -D @{-1}
     bl    = fancy-branch-list
     bm    = branch -M
     bn    = rev-parse --abbrev-ref HEAD
