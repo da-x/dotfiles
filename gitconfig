@@ -91,6 +91,7 @@
     d     = "!git diff"
     ec    = "!vim `git rev-parse --git-dir`/config"
     f     = fetch
+    sreb  = !sh -c 'stg-rebase-i $@' -
     ftl   = !sh -c 'git fixup-to-last $@' -
     ful   = !sh -c '~/.files/git-fixup/git-fixup $@' -
     g     = "!git grep"
