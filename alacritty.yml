@@ -278,10 +278,9 @@ key_bindings:
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
-
-ouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
+mouse:
+  url:
+    modifiers: Control
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
