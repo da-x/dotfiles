@@ -60,6 +60,7 @@
 [alias]
     a     = add
     top   = !sh -c 'git --no-pager log -n 10 --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
+    fp1   = !sh -c 'git format-patch $1~1..$1' --
     amd   = commit --amend
     amend = commit --amend
     ama   = commit --amend -a
