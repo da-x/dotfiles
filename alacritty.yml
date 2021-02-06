@@ -176,7 +176,7 @@ key_bindings:
   - { key: U,        mods: Control | Shift, chars: "\x1b[5;30017~"       }
   - { key: T,        mods: Control | Shift, chars: "\x1b[5;30018~"       }
   - { key: Y,        mods: Control | Shift, chars: "\x1b[5;30019~"       }
-  - { key: Subtract,  mods: Control | Alt,   chars: "\x1b[5;30020~"       }
+  - { key: NumpadSubtract,  mods: Control | Alt,   chars: "\x1b[5;30020~"       }
   - { key: Backslash, mods: Control | Alt,   chars: "\x1b[5;30021~"       }
   - { key: Apostrophe, mods: Control,   chars: "\x1b[5;30024~"       }
   - { key: Delete,   mods: Control,         chars: "\x1b[3;5~"           }
