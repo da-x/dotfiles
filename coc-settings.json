@@ -1,0 +1,4 @@
+{
+    "rust-analyzer.diagnostics.disabled" : ["unresolved-proc-macro", "macro-error"],
+    "rust-analyzer.procMacro.enable" : false
+}
