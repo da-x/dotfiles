@@ -1,0 +1,9 @@
+browser "google-chrome %u"
+color background          white   black
+color listnormal          white   black
+color listfocus           white   color25  bold
+color listnormal_unread   cyan    black
+color listfocus_unread    yellow  color25     bold
+color info                white   color17
+color article             white   black
+datetime-format "%Y.%m.%d"
