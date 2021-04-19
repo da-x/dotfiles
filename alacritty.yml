@@ -181,15 +181,15 @@ key_bindings:
   - { key: Apostrophe, mods: Control,   chars: "\x1b[5;30024~"       }
   - { key: Delete,   mods: Control,         chars: "\x1b[3;5~"           }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
-  - { key: Key1,     mods: Control, chars: "\x1b[27;5;49~"               }
-  - { key: Key2,     mods: Control, chars: "\x1b[27;5;50~"               }
-  - { key: Key3,     mods: Control, chars: "\x1b[27;5;51~"               }
-  - { key: Key4,     mods: Control, chars: "\x1b[27;5;52~"               }
-  - { key: Key5,     mods: Control, chars: "\x1b[27;5;53~"               }
-  - { key: Key6,     mods: Control, chars: "\x1b[27;5;54~"               }
-  - { key: Key7,     mods: Control, chars: "\x1b[27;5;55~"               }
-  - { key: Key8,     mods: Control, chars: "\x1b[27;5;56~"               }
-  - { key: Key9,     mods: Control, chars: "\x1b[27;5;57~"               }
+  - { key: Key1,     mods: Control, chars: "\x1b[5;30031~"               }
+  - { key: Key2,     mods: Control, chars: "\x1b[5;30032~"               }
+  - { key: Key3,     mods: Control, chars: "\x1b[5;30033~"               }
+  - { key: Key4,     mods: Control, chars: "\x1b[5;30034~"               }
+  - { key: Key5,     mods: Control, chars: "\x1b[5;30035~"               }
+  - { key: Key6,     mods: Control, chars: "\x1b[5;30036~"               }
+  - { key: Key7,     mods: Control, chars: "\x1b[5;30037~"               }
+  - { key: Key8,     mods: Control, chars: "\x1b[5;30038~"               }
+  - { key: Key9,     mods: Control, chars: "\x1b[5;30039~"               }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[1~",  mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
