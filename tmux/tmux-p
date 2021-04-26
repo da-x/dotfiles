@@ -1,31 +1,56 @@
 #!/bin/bash
 
-# Reattach to unattached sessions as long as they exist
-
-iteration=0
-
 get_unattached() {
     tmux list-sess | grep -v '\(attached\)' | awk -F":" '{print $1}' | head -n 1
 }
 
-while [ 1 ] ; do
-    unattached=$(get_unattached)
+session_exists() {
+    tmux list-sess -F '#{session_name}' | grep '^'"${1}"'$' >/dev/null 2>/dev/null
+}
 
-    if [[ "${iteration}" == "0" ]] ; then
-	if [[ "${unattached}" == "" ]] ; then
-	    # New session
-	    tmux
-	    unattached=$(get_unattached)
+reattached() {
+    # Reattach to unattached sessions as long as they exist
+
+    iteration=0
+
+    while [ 1 ] ; do
+	unattached=$(get_unattached)
+
+	if [[ "${iteration}" == "0" ]] ; then
+	    if [[ "${unattached}" == "" ]] ; then
+		# New session
+		tmux
+		unattached=$(get_unattached)
+	    fi
+	fi
+
+	if [[ "${unattached}" != "" ]] ; then
+	    # Attach to session
+	    tmux a -t ${unattached}
+	else
+	    # No more sessions
+	    break
+	fi
+
+	iteration=$(($iteration + 1))
+    done
+}
+
+new() {
+    echo "Waiting for input..."
+    local name=$(echo $1 | dmenu -p x -b)
+    # New session
+
+    if [[ "$name" == "" ]] ; then
+	tmux new-session
+    else
+	if session_exists ${name}; then
+	    local target=$(tmux new-window -d -P -t ${name})
+	    tmux a -t ${target}
+	else
+	    tmux new-session -s "${name}"
 	fi
     fi
+}
 
-    if [[ "${unattached}" != "" ]] ; then
-	# Attach to session
-	tmux a -t ${unattached}
-    else
-	# No more sessions
-	break
-    fi
-
-    iteration=$(($iteration + 1))
-done
+"$@"
