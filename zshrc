@@ -15,3 +15,7 @@ if [ -f '/home/dan/var/google-cloud-sdk/completion.zsh.inc' ]; then source '/hom
 
 # added by travis gem
 [ -f /home/dan/.travis/travis.sh ] && source /home/dan/.travis/travis.sh
+
+# Terraform completions
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
