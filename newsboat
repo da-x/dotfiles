@@ -1,4 +1,4 @@
-browser "google-chrome %u"
+browser "xdg-open %u"
 color background          white   black
 color listnormal          white   black
 color listfocus           white   color25  bold
