@@ -278,10 +278,6 @@ key_bindings:
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
-mouse:
-  url:
-    modifiers: Control
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
