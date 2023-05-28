@@ -61,6 +61,9 @@
     a     = add
     top   = !sh -c 'git --no-pager log -n 10 --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
     fp1   = !sh -c 'git format-patch $1~1..$1' --
+    poH   = push origin HEAD
+    podel = push origin --delete
+    podelh = !sh -c 'git push origin --delete $(git rev-parse --abbrev-ref HEAD)'
     amd   = commit --amend
     amend = commit --amend
     ama   = commit --amend -a
@@ -90,7 +93,7 @@
     cp2   = chop2
     ctags = !sh -c '~/.files/ctags.sh $@' -
     d     = "!git diff"
-    ec    = "!vim `git rev-parse --git-dir`/config"
+    ec    = "!nvim `git rev-parse --git-dir`/config"
     f     = fetch
     sreb  = !sh -c 'stg-rebase-i $@' -
     ftl   = !sh -c 'git fixup-to-last $@' -
