@@ -103,7 +103,7 @@
     l1    = "!git log -1"
     last  = !sh -c 'T=`git tb` && git log ${T}@{1}..${T} $@' -
     lc    = !sh -c 'git log `git tb`..HEAD $@' --
-    lc1   = !sh -c 'git log `git tb`..HEAD --oneline $@' --
+    lc1   = !sh -c 'tb=$(git tb) && tbh=`git rev-parse ${tb}` && head=`git rev-parse HEAD`&& echo Changes from tracking: ${tb}..HEAD [${tbh:0:10}..${head:0:10}] && echo  && git log --no-decorate `git tb`..HEAD --oneline $@' --
     lcr   = !sh -c 'git log --reverse `git tb`..HEAD $@' --
     lig   = "!git ls-ignored"
     n     = next
@@ -132,6 +132,7 @@
     sh7   = "!git show HEAD~7 $@"
     sh8   = "!git show HEAD~8 $@"
     tb    = "!git tracking-branch"
+    stb   = !sh -c 'ntb=$1 && bn=`git bn` && git branch --set-upstream-to=${ntb} ${bn}' -
     todo  = "!vim `git rev-parse --git-dir`/todo.md"
 
     # What refs contains the sha

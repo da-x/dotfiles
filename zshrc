@@ -6,6 +6,7 @@ export GOPATH=$HOME/.go
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source ~/.zsh/zshrc.sh
+source ~/.asdf/asdf.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/dan/var/google-cloud-sdk/path.zsh.inc' ]; then source '/home/dan/var/google-cloud-sdk/path.zsh.inc'; fi
