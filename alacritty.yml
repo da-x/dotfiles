@@ -170,7 +170,6 @@ key_bindings:
   - { key: PageDown, mods: Shift,   action: ScrollPageDown }
   - { key: End,      mods: Shift,   action: ScrollToBottom }
   - { key: Home,     mods: Shift,   action: ScrollToTop    }
-  - { key: Space,    mods: Control,         chars: "\x1b[5;30014~"       }
   - { key: M,        mods: Control | Shift, chars: "\x1b[5;30015~"       }
   - { key: J,        mods: Control | Shift, chars: "\x1b[5;30016~"       }
   - { key: U,        mods: Control | Shift, chars: "\x1b[5;30017~"       }
