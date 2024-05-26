@@ -93,7 +93,7 @@
     cp2   = chop2
     ctags = !sh -c '~/.files/ctags.sh $@' -
     d     = "!git diff"
-    ec    = "!nvim `git rev-parse --git-dir`/config"
+    ec    = "!nvim `git rev-parse --git-common-dir`/config"
     f     = fetch
     sreb  = !sh -c 'stg-rebase-i $@' -
     ftl   = !sh -c 'git fixup-to-last $@' -
