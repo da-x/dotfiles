@@ -8,7 +8,8 @@ ln -s $(pwd)/dotvimrc ~/.vimrc
 ln -s $(pwd)/vimrc ~/.vim_runtime
 
 # NeoVim
-ln -s $(pwd)/nvim/init.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim
+ln -s $HOME/.vim_runtime/nvim/* ~/.config/nvim
 
 # Tmux
 ln -s $(pwd)/tmux.conf ~/.tmux.conf
