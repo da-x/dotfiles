@@ -68,7 +68,6 @@
     amend = commit --amend
     ama   = commit --amend -a
     amna  = commit --amend --no-edit -a
-    amupd = commit --amend --no-edit --date=\"$(date -R)\" -a
     b     = branch -v
     bd    = branch -D
     # Delete previous branch

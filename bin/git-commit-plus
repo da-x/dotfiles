@@ -1,0 +1,83 @@
+#!/bin/bash
+
+set -eu
+set -o pipefail
+set +o posix
+shopt -s inherit_errexit
+
+###############################################################
+# Main function
+###############################################################
+
+main() {
+    local add=0
+    local no_edit=0
+    local force=0
+    local positional=()
+    local params
+
+    params=()
+
+    while [[ $# != 0 ]] ; do
+        if [[ "$1" =~ ^--(.*)$ ]] ; then
+            shift
+            local param
+            param="${BASH_REMATCH[1]}"
+            case ${param} in
+		add) params+=("-a") ;;
+		no-edit) no_edit=1  ;;
+		force) force=1  ;;
+		reset-date) params+=("--date=$(date -R)") ;;
+                *) "invalid parameter ${param}"; return 1 ;;
+            esac
+        else
+            positional+=("$1")
+            shift
+        fi
+    done
+
+    set -- "${positional[@]}"
+
+    case ${positional[0]:-} in
+	amend)
+	    if [[ "$force" == "1" ]] || [[ $(git status --porcelain | wc -l) != "0" ]]; then
+		if [[ "$no_edit" == "1" ]] ; then
+		    GIT_EDITOR="${BASH_SOURCE} editor" git commit --amend "${params[@]}"
+		else
+		    git commit --amend "${params[@]}"
+		fi
+	    else
+		echo "Nothing to commit"
+	    fi
+	    ;;
+
+	editor)
+	    shift
+	    awk 'NR == 1 {
+		if (match($0, /\(amend count: [0-9]+\)/)) {
+		    n = substr($0, RSTART + 13, RLENGTH - 14);
+		    $0 = substr($0, 1, RSTART + 13) (n+1) substr($0, RSTART + RLENGTH - 1);
+		}
+		print;
+		next;
+	    } { print }' "$1" > $1.tmp
+	    mv $1.tmp $1
+	    ;;
+
+	tentative)
+	    local x
+	    x=""
+	    if [[ "$@" != "" ]] ; then
+		x="$@ "
+	    fi
+	    git commit -m "WIP $x(amend count: 0)" "${params[@]}"
+	    ;;
+    esac
+
+}
+
+###############################################################
+# Infra
+###############################################################
+
+main "$@"
