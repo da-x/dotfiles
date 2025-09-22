@@ -1,15 +1,18 @@
 [submodule "vimrc"]
-	path = vimrc
-	url = https://github.com/da-x/vimrc
+    path = vimrc
+    url = https://github.com/da-x/vimrc
+[submodule "rvim"]
+    path = rvim
+    url = https://github.com/da-x/rvim
 [submodule "dotzsh"]
-	path = dotzsh
-	url = https://github.com/da-x/dotzsh
+    path = dotzsh
+    url = https://github.com/da-x/dotzsh
 [submodule "gdb-dashboard"]
-	path = gdb-dashboard
-	url = https://github.com/cyrus-and/gdb-dashboard
+    path = gdb-dashboard
+    url = https://github.com/cyrus-and/gdb-dashboard
 [submodule "git-fixup"]
-	path = git-fixup
-	url = https://github.com/keis/git-fixup
+    path = git-fixup
+    url = https://github.com/keis/git-fixup
 [submodule "tmux/tmux-resurrect"]
-	path = tmux/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect
+    path = tmux/tmux-resurrect
+    url = https://github.com/tmux-plugins/tmux-resurrect
