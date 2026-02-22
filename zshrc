@@ -9,3 +9,5 @@ source ~/.zsh/zshrc.sh
 
 # bun completions
 [ -s "/home/dan/.bun/_bun" ] && source "/home/dan/.bun/_bun"
+
+alias claude="/home/dan/.claude/local/claude"
